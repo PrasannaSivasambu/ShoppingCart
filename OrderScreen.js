@@ -35,7 +35,7 @@ const OrderScreen = () => {
   const ItemSeparator = () => <View style={styles.separator} />;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
-      <Text style={{ fontSize: 30, padding: 5, fontWeight: '900', color: 'grey' }}>
+      <Text style={{ fontSize: 30, padding: 5, fontWeight: '900', color: '#363737' }}>
         Order Details
       </Text>
       {Order.length !== 0 ?

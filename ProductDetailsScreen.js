@@ -18,11 +18,11 @@ export default function ProductDetailsScreen({ Product, selectedcategory, Produc
       }}
     >
       <View style={{ padding: 10, flexDirection: 'row', left: 15, width: width - 30, borderRadius: 15, backgroundColor: 'orange' }}>
-        <Image source={{ uri: item.thumbnail }} style={{ height: '60%', width: '15%', padding: 5, top: 6 }} />
+        <Image source={{ uri: item.thumbnail }} style={{ height: '60%', width: '10%', padding: 5, top: 6 }} />
         <View style={{ flexDirection: 'column', left: '75%' }}>
-          <Text numberOfLines={1} style={{ fontSize: 12, fontWeight: '800', color: 'grey', padding: 5 }}>Name : {item.title}</Text>
-          <Text numberOfLines={1} style={{ fontSize: 18, fontWeight: '800', color: 'grey', padding: 5 }}>Brand : {item.brand}</Text>
-          <Text style={{ fontSize: 20, fontWeight: '800', color: 'grey', padding: 5 }}>Discount : {item.discountPercentage}</Text>
+          <Text numberOfLines={1} style={{ fontSize: 9, fontWeight: '800', color: 'grey', padding: 5,width: '100%',  }}  >Name : {item.title}</Text>
+          <Text numberOfLines={1} style={{ fontSize: 13, fontWeight: '800', color: 'grey', padding: 5,width: '100%' }}>Brand : {item.brand}</Text>
+          <Text style={{ fontSize: 15, fontWeight: '800', color: 'grey', padding: 5 }}>Discount : {item.discountPercentage}</Text>
         </View>
       </View>
     </TouchableNativeFeedback>
@@ -33,7 +33,7 @@ export default function ProductDetailsScreen({ Product, selectedcategory, Produc
     <Animated.View style={{ transform: [{ translateX: ProductDetailsInterpolate }], position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
 
-        <Text style={{ fontSize: 30, padding: 5, fontWeight: '900', color: 'grey' }}>
+        <Text style={{ fontSize: 30, padding: 5, fontWeight: '900', color: '#363737' }}>
           Product Details
         </Text>
 

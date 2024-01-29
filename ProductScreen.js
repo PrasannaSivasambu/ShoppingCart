@@ -8,6 +8,7 @@ import { assignToArray } from './store/slices/productSlice'
 const ProductScreen = () => {
   const { width, height } = Dimensions.get('window');
   const [category, setcategory] = useState([])
+  const [activityshow,setActivityShow]=useState(true)
   const [selectedcategory, setSelectedCategory] = useState(null)
   const [ProductDetailsAnimation, setProductDetailsAnimation] = useState(new Animated.Value(0))
   const ProductDetailsInterpolate = ProductDetailsAnimation.interpolate({
@@ -31,6 +32,9 @@ const ProductScreen = () => {
 
       return true
     })
+    setTimeout(()=>{
+      setActivityShow(false)
+    },3000)
     // Fetch data from the API
     console.log('ui')
     fetchData();
@@ -61,12 +65,12 @@ const ProductScreen = () => {
 
   const renderItem = ({ item, index }) => (
     <TouchableNativeFeedback
-
+      style={{}}
       onPress={() => {
         showDetails(item);
       }}
     >
-      <View style={{ padding: 10, borderBottomWidth: 0.2, borderTopWidth: index === 0 ? 0.2 : 0 }}>
+      <View style={{ padding: 10, borderBottomWidth: 0.2,backgroundColor:'orange', borderTopWidth: index === 0 ? 0.2 : 0 }}>
         {/* <Image source={{ uri: Product[index].thumbnail }} /> */}
         <Text style={{ fontSize: 20, fontWeight: '800', color: 'grey' }}>{item}</Text>
       </View>
@@ -83,7 +87,7 @@ const ProductScreen = () => {
     setSelectedCategory(cate)
   }
 
-
+  const ItemSeparator = () => <View style={styles.separator} />;
 
   return (
     <>
@@ -91,23 +95,29 @@ const ProductScreen = () => {
 
 
 
-      <Animated.View style={{ transform: [{ translateX: ProductScreenInterpolate }] }}>
-        <Text style={{ fontSize: 30, padding: 5, fontWeight: '900', color: 'grey' }}>
-          Product Categories
+      <Animated.View style={{ transform: [{ translateX: ProductScreenInterpolate }],flexDirection:'row' }}>
+        <Text style={{ fontSize: 28, padding: 5, fontWeight: '900', color: '#363737' }}>
+          Product Categories 
+        </Text>
+        <Text style={{ fontSize: 10, marginTop:'6%', fontWeight: '900', color: '#363737' }}>
+          (click to view details)
         </Text>
       </Animated.View>
+    {category.length===0?
+      <Animated.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ translateX: ProductScreenInterpolate }] }}>
+          <ActivityIndicator size="large" color="grey" style={{  }} />
+
+        </Animated.View>:null}
 
       {!category ? (
-        <Animated.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ translateX: ProductScreenInterpolate }] }}>
-          <ActivityIndicator size="large" color="grey" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }} />
-
-        </Animated.View>
+        null
       ) : (
         <Animated.View style={{ justifyContent: 'center', padding: 6, transform: [{ translateX: ProductScreenInterpolate }] }}>
           <FlatList
             data={category}
             keyExtractor={(item) => item}
             renderItem={renderItem}
+            ItemSeparatorComponent={ItemSeparator}
           />
 
         </Animated.View>
@@ -126,4 +136,8 @@ const ProductScreen = () => {
 
 export default ProductScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  separator: {
+    height: 10,
+  },
+})

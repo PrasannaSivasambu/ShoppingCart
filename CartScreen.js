@@ -97,7 +97,7 @@ const CartScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View>
-        <Text style={{ fontSize: 30, fontWeight: '800', color: 'grey', padding: 5, top: '0%', left: '0%' }}>
+        <Text style={{ fontSize: 30, fontWeight: '800', color: 'grey', padding: 5, top: '0%', left: '0%' ,color: '#363737' }}>
           Selected Goods
         </Text>
       </View>
