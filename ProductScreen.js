@@ -8,7 +8,7 @@ import { assignToArray } from './store/slices/productSlice'
 const ProductScreen = () => {
   const { width, height } = Dimensions.get('window');
   const [category, setcategory] = useState([])
-  const [activityshow,setActivityShow]=useState(true)
+  const [activityshow, setActivityShow] = useState(true)
   const [selectedcategory, setSelectedCategory] = useState(null)
   const [ProductDetailsAnimation, setProductDetailsAnimation] = useState(new Animated.Value(0))
   const ProductDetailsInterpolate = ProductDetailsAnimation.interpolate({
@@ -32,9 +32,9 @@ const ProductScreen = () => {
 
       return true
     })
-    setTimeout(()=>{
+    setTimeout(() => {
       setActivityShow(false)
-    },3000)
+    }, 3000)
     // Fetch data from the API
     console.log('ui')
     fetchData();
@@ -70,14 +70,20 @@ const ProductScreen = () => {
         showDetails(item);
       }}
     >
-      <View style={{ padding: 10, borderBottomWidth: 0.2,backgroundColor:'orange', borderTopWidth: index === 0 ? 0.2 : 0 }}>
+      <View style={{ padding: 10, borderBottomWidth: 0.2, backgroundColor: 'orange', borderTopWidth: index === 0 ? 0.2 : 0 }}>
         {/* <Image source={{ uri: Product[index].thumbnail }} /> */}
         <Text style={{ fontSize: 20, fontWeight: '800', color: 'grey' }}>{item}</Text>
       </View>
     </TouchableNativeFeedback>
   );
   const showDetails = (cate) => {
-
+    axios.post('http://localhost:5000/sendrequest',{token:'eHrAlJXER2umgOML-Ayq6_:APA91bGi1uJpV3EfoAquCSnco04ez78pRtwse6m5uSNsG0chuRaVBEn0Hw8Kj0BXsJkPyHiopE6s3ZPTueHhjlYc1aXRmL2fLlpOjtSVRGaqkbO_MWSSsjazjp_kXJY-ujMK9LU4Je9J'})
+    .then((res)=>{
+      console.log('array bhaiya',res)
+    })
+    .catch(e=>{
+      console.log('yelley Bhaiya',e)
+    })
 
     Animated.timing(ProductDetailsAnimation, {
       toValue: 1,
@@ -95,19 +101,19 @@ const ProductScreen = () => {
 
 
 
-      <Animated.View style={{ transform: [{ translateX: ProductScreenInterpolate }],flexDirection:'row' }}>
+      <Animated.View style={{ transform: [{ translateX: ProductScreenInterpolate }], flexDirection: 'row' }}>
         <Text style={{ fontSize: 28, padding: 5, fontWeight: '900', color: '#363737' }}>
-          Product Categories 
+          Product Categories
         </Text>
-        <Text style={{ fontSize: 10, marginTop:'6%', fontWeight: '900', color: '#363737' }}>
+        <Text style={{ fontSize: 10, marginTop: '6%', fontWeight: '900', color: '#363737' }}>
           (click to view details)
         </Text>
       </Animated.View>
-    {category.length===0?
-      <Animated.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ translateX: ProductScreenInterpolate }] }}>
-          <ActivityIndicator size="large" color="grey" style={{  }} />
+      {category.length === 0 ?
+        <Animated.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ translateX: ProductScreenInterpolate }] }}>
+          <ActivityIndicator size="large" color="grey" style={{}} />
 
-        </Animated.View>:null}
+        </Animated.View> : null}
 
       {!category ? (
         null
