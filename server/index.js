@@ -35,7 +35,7 @@ app.post('/sendrequest',(req,res)=>{
           title: '$FooCorp up 1.43% on the day',
           body: '$FooCorp gained 11.80 points to close at 835.67, up 1.43% on the day.'
         },
-        token:recievedtoken
+        token:'eHrAlJXER2umgOML-Ayq6_:APA91bGi1uJpV3EfoAquCSnco04ez78pRtwse6m5uSNsG0chuRaVBEn0Hw8Kj0BXsJkPyHiopE6s3ZPTueHhjlYc1aXRmL2fLlpOjtSVRGaqkbO_MWSSsjazjp_kXJY-ujMK9LU4Je9J'
       };
       
       // Send a message to devices subscribed to the combination of topics
@@ -44,7 +44,7 @@ app.post('/sendrequest',(req,res)=>{
         .then((response) => {
             res.status(200).json({
                 message:'Successfully sent',
-                token:recievedtoken
+                token:'eHrAlJXER2umgOML-Ayq6_:APA91bGi1uJpV3EfoAquCSnco04ez78pRtwse6m5uSNsG0chuRaVBEn0Hw8Kj0BXsJkPyHiopE6s3ZPTueHhjlYc1aXRmL2fLlpOjtSVRGaqkbO_MWSSsjazjp_kXJY-ujMK9LU4Je9J'
             })
           // Response is a message ID string.
           console.log('Successfully sent message:', response);
