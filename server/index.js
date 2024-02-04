@@ -17,6 +17,11 @@ app.use((req,res,next)=>{
     res.setHeader('Content-Type','application/json')
     next()
 })
+app.use(
+    cors({
+        methods:['GET','POST','DELETE','UPDATE','PUT','PATCH']
+    })
+)
 
 initializeApp({
   credential: applicationDefault(),
