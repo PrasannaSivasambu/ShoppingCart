@@ -10,7 +10,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// process.env.GOOGLE_APPLICATION_CREDENTIALS
+process.env.GOOGLE_APPLICATION_CREDENTIALS
 // var serviceAccount = require("E:\shoppingcart\server\shoppingcart-c3ba2-firebase-adminsdk-pdkcb-428dd8ef73.json");
 
 app.use((req,res,next)=>{
